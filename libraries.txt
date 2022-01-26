@@ -1,0 +1,4 @@
+
+LiquidCrystal I2C
+RTClib
+DHTlib

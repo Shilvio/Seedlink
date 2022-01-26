@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": -81.7, "left": 25.14, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 180.99,
+      "left": 328.73,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-ky-040", "id": "encoder1", "top": -199.73, "left": 10.26, "attrs": {} },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": 310.51,
+      "left": -31.83,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -246.92,
+      "left": -88.77,
+      "attrs": { "humidity": "0" }
+    },
+    {
+      "type": "wokwi-ds1307",
+      "id": "rtc1",
+      "top": 373.16,
+      "left": 72.69,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -363.7,
+      "left": 113.98,
+      "rotate": 90,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "lcd1:GND", "uno:GND.3", "black", [ "h0" ] ],
+    [ "encoder1:CLK", "uno:2", "blue", [ "h0" ] ],
+    [ "uno:GND.3", "ntc1:GND", "black", [ "v0" ] ],
+    [ "ntc1:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "uno:GND.3", "rtc1:GND", "black", [ "v230.87", "h-54.81" ] ],
+    [ "rtc1:5V", "uno:5V", "red", [ "v-207.99", "h47.02" ] ],
+    [ "lcd1:VCC", "uno:5V", "red", [ "h-184.7", "v-0.14" ] ],
+    [ "ntc1:OUT", "uno:A0", "purple", [ "v-117.4", "h153.77" ] ],
+    [ "encoder1:VCC", "uno:5V", "red", [ "h0" ] ],
+    [ "dht1:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "dht1:GND", "uno:GND.1", "black", [ "v0" ] ],
+    [ "dht1:SDA", "uno:5", "cyan", [ "v29.5", "h291.13" ] ],
+    [ "ldr1:GND", "uno:GND.1", "black", [ "v118.39", "h-68.01" ] ],
+    [ "encoder1:GND", "uno:GND.1", "black", [ "h0" ] ],
+    [ "ldr1:VCC", "uno:5V", "red", [ "v257.29", "h-24.05" ] ],
+    [ "ldr1:DO", "uno:6", "white", [ "v110.92", "h28.47" ] ],
+    [ "encoder1:SW", "uno:3", "green", [ "h0" ] ],
+    [ "encoder1:DT", "uno:4", "purple", [ "h0" ] ],
+    [ "lcd1:SCL", "rtc1:SCL", "blue", [ "h0" ] ],
+    [ "lcd1:SDA", "rtc1:SDA", "orange", [ "h0" ] ],
+    [ "rtc1:SDA", "uno:A4", "orange", [ "v-177.22", "h140.02" ] ],
+    [ "rtc1:SCL", "uno:A5", "blue", [ "v-167.29", "h158.99" ] ]
+  ]
+}
