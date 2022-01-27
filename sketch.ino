@@ -26,6 +26,8 @@ dht DHT;
 //Costants
 #define DEFAULT_RESPONSE_TIME 50
 #define LONG_PRESS 1000
+#define ZERO 0
+#define MAX_MENU 2
 
 //global variables
 int8_t lastState = HIGH;
@@ -34,11 +36,11 @@ char week[7][4] = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 unsigned long lastButtonPress = 0;
 bool singlePress= false;
 bool encoderPos;
-int selected_menu = 0;
+int selectedMenu = 0;
 int lastCLK = digitalRead(CLK);
 
 //imported from screens.ino
-void renderMenu(int menu);
+void renderMenu();
 
 //imported from iohandler.io
 void rotateEncoder();
@@ -74,5 +76,6 @@ void setup() {
 }
 
 void loop() {
-  renderMenu(selected_menu);
+  Serial.print(selectedMenu);
+  renderMenu();
 }

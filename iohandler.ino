@@ -1,5 +1,5 @@
 //function that makes the button only pressed once
-void press(){
+int press(){
 
   unsigned long startTime;
   int8_t state = digitalRead(SW);
@@ -12,19 +12,24 @@ void press(){
     }
     //detects short press
     if( state == HIGH && millis() - lastButtonPress < LONG_PRESS ){
-      Serial.println("si abbassa il pipo");
+      
+      lastState = state;
+      return 1;
     }
     
   }
 
   //detects long press
   if( singlePress == true & state == LOW && millis() - lastButtonPress >= LONG_PRESS ){
-    Serial.println("si alza il pipo");
+
     singlePress = false;
+    lastState = state;
+    return 2;
     
   }
 
   lastState = state;
+  return 0;
 
 }
 

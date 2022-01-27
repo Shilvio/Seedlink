@@ -1,23 +1,41 @@
 
 //imported from iohandler.ino
-void press();
+int press();
 void rotateEncoder();
 
 //menu renderer
-void renderMenu(int menu)
-{
-  switch (menu)
+void renderMenu()
+{ 
+  switch (selectedMenu)
   {
+    case 0:
+      defaultScreen();
+      break;
+    
     case 1:
       mainMenu();
-    break;
-    default:
-      defaultScreen();
+      break;
   }
 }
 
 //main menu for selecting settings or irrigation
 void mainMenu () {
+  
+   //inputs
+  int button = press(); 
+
+  if(button == 1){
+    selectedMenu ++;
+    lcd.clear();
+    return;
+  }
+  else if(button == 2)
+  {
+    selectedMenu --;
+    lcd.clear();
+    return;
+  }
+
   timeNow = millis();
 
   DateTime now = rtc.now();//set current time to a variable
@@ -35,8 +53,21 @@ void defaultScreen () {
 
   timeNow = millis();
 
+  
   //inputs
-  press();
+  int button = press(); 
+
+  if(button == 1){
+    selectedMenu ++;
+    lcd.clear();
+    return;
+  }
+  else if(button == 2)
+  {
+    selectedMenu --;
+    lcd.clear();
+    return;
+  }
 
   DateTime now = rtc.now();//set current time to a variable
   //print current day

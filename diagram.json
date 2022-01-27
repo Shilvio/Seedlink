@@ -25,7 +25,7 @@
       "id": "dht1",
       "top": -246.92,
       "left": -87.92,
-      "attrs": { "humidity": "0" }
+      "attrs": { "humidity": "52.5" }
     },
     {
       "type": "wokwi-ds1307",
