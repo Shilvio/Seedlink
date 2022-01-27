@@ -7,11 +7,11 @@
     {
       "type": "wokwi-lcd1602",
       "id": "lcd1",
-      "top": 180.99,
-      "left": 328.73,
+      "top": 178.92,
+      "left": 293.61,
       "attrs": { "pins": "i2c" }
     },
-    { "type": "wokwi-ky-040", "id": "encoder1", "top": -199.73, "left": 10.26, "attrs": {} },
+    { "type": "wokwi-ky-040", "id": "encoder1", "top": -199.73, "left": 11.11, "attrs": {} },
     {
       "type": "wokwi-ntc-temperature-sensor",
       "id": "ntc1",
@@ -24,7 +24,7 @@
       "type": "wokwi-dht22",
       "id": "dht1",
       "top": -246.92,
-      "left": -88.77,
+      "left": -87.92,
       "attrs": { "humidity": "0" }
     },
     {
@@ -38,14 +38,13 @@
     {
       "type": "wokwi-photoresistor-sensor",
       "id": "ldr1",
-      "top": -363.7,
-      "left": 113.98,
+      "top": -333.75,
+      "left": 115.23,
       "rotate": 90,
       "attrs": {}
     }
   ],
   "connections": [
-    [ "lcd1:GND", "uno:GND.3", "black", [ "h0" ] ],
     [ "encoder1:CLK", "uno:2", "blue", [ "h0" ] ],
     [ "uno:GND.3", "ntc1:GND", "black", [ "v0" ] ],
     [ "ntc1:VCC", "uno:5V", "red", [ "v0" ] ],
@@ -66,6 +65,7 @@
     [ "lcd1:SCL", "rtc1:SCL", "blue", [ "h0" ] ],
     [ "lcd1:SDA", "rtc1:SDA", "orange", [ "h0" ] ],
     [ "rtc1:SDA", "uno:A4", "orange", [ "v-177.22", "h140.02" ] ],
-    [ "rtc1:SCL", "uno:A5", "blue", [ "v-167.29", "h158.99" ] ]
+    [ "rtc1:SCL", "uno:A5", "blue", [ "v-167.29", "h158.99" ] ],
+    [ "uno:GND.3", "lcd1:GND", "black", [ "v0" ] ]
   ]
 }
