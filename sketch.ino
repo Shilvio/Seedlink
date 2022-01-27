@@ -1,12 +1,12 @@
-
 #include <LiquidCrystal_I2C.h>
 #include <dht.h>
 #include <RTClib.h>
 
 //pin for rotary encoder
 #define CLK 2
-#define DT 4
-#define SW 3 //rotary encoder switch
+#define DT 3
+#define SW 4 //rotary encoder switch
+
 
 //LCD settings
 LiquidCrystal_I2C lcd(0x27,16,2); //lcd settings
@@ -34,16 +34,13 @@ char week[7][4] = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 unsigned long lastButtonPress = 0;
 bool singlePress= false;
 bool encoderPos;
-
 int selected_menu = 0;
+int lastCLK = digitalRead(CLK);
 
-//--- screens.ino
-
+//imported from screens.ino
 void renderMenu(int menu);
 
-//--- iohandler.ino
-
-void press();
+//imported from iohandler.io
 void rotateEncoder();
 
 void setup() {
@@ -53,12 +50,13 @@ void setup() {
   lcd.backlight();
 
   //starting serial
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   //setup rotary encoder
   pinMode(CLK, INPUT);
   pinMode(DT, INPUT);
   pinMode(SW, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(CLK), rotateEncoder, FALLING);
   encoderPos = digitalRead(DT);
   
 
@@ -76,9 +74,5 @@ void setup() {
 }
 
 void loop() {
-
   renderMenu(selected_menu);
-
 }
-
-

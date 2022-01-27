@@ -31,13 +31,13 @@ void press(){
 //encoder rotation
 void rotateEncoder()
 {
-  int dtValue = digitalRead(DT);
 
-  if (dtValue == HIGH && encoderPos == 0) {
-    Serial.print("Clockwise"); // Clockwise
+  int dtValue = digitalRead(DT);
+  if (dtValue == HIGH) {
+    Serial.println("Rotated clockwise ⏩");
   }
-  if (dtValue == LOW && encoderPos == 1) {
-    Serial.print("counter clockwise"); // Counterclockwise
+  if (dtValue == LOW) {
+    Serial.println("Rotated counterclockwise ⏪");
   }
 
 }

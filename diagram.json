@@ -11,7 +11,7 @@
       "left": 293.61,
       "attrs": { "pins": "i2c" }
     },
-    { "type": "wokwi-ky-040", "id": "encoder1", "top": -199.73, "left": 11.11, "attrs": {} },
+    { "type": "wokwi-ky-040", "id": "encoder1", "top": -199.73, "left": 10.72, "attrs": {} },
     {
       "type": "wokwi-ntc-temperature-sensor",
       "id": "ntc1",
@@ -60,12 +60,12 @@
     [ "encoder1:GND", "uno:GND.1", "black", [ "h0" ] ],
     [ "ldr1:VCC", "uno:5V", "red", [ "v257.29", "h-24.05" ] ],
     [ "ldr1:DO", "uno:6", "white", [ "v110.92", "h28.47" ] ],
-    [ "encoder1:SW", "uno:3", "green", [ "h0" ] ],
-    [ "encoder1:DT", "uno:4", "purple", [ "h0" ] ],
     [ "lcd1:SCL", "rtc1:SCL", "blue", [ "h0" ] ],
     [ "lcd1:SDA", "rtc1:SDA", "orange", [ "h0" ] ],
     [ "rtc1:SDA", "uno:A4", "orange", [ "v-177.22", "h140.02" ] ],
     [ "rtc1:SCL", "uno:A5", "blue", [ "v-167.29", "h158.99" ] ],
-    [ "uno:GND.3", "lcd1:GND", "black", [ "v0" ] ]
+    [ "uno:GND.3", "lcd1:GND", "black", [ "v0" ] ],
+    [ "encoder1:SW", "uno:4", "green", [ "h0" ] ],
+    [ "encoder1:DT", "uno:3", "purple", [ "h0" ] ]
   ]
 }

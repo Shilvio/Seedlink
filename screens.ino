@@ -1,21 +1,23 @@
+
+//imported from iohandler.ino
+void press();
+void rotateEncoder();
+
 //menu renderer
 void renderMenu(int menu)
 {
   switch (menu)
   {
     case 1:
-      Serial.println(menu);
       mainMenu();
     break;
     default:
-      Serial.println(menu);
       defaultScreen();
   }
 }
 
 //main menu for selecting settings or irrigation
 void mainMenu () {
-
   timeNow = millis();
 
   DateTime now = rtc.now();//set current time to a variable
@@ -32,6 +34,9 @@ void mainMenu () {
 void defaultScreen () {
 
   timeNow = millis();
+
+  //inputs
+  press();
 
   DateTime now = rtc.now();//set current time to a variable
   //print current day
@@ -66,9 +71,42 @@ void defaultScreen () {
   float celsius = 1 / (log(1 / (1023. / analogValue - 1)) / BETA + 1.0 / 298.15) - 273.15;
   lcd.setCursor(12,1);
   lcd.print(celsius);
-  press(); // detects button press
 
   while(millis() < timeNow + DEFAULT_RESPONSE_TIME){
-    
+  }
+}
+// watering menu
+void wateringScreen()
+{
+  //inputs reading
+  press();
+
+  int timeNow = millis();
+
+  while(millis() < timeNow + DEFAULT_RESPONSE_TIME){
+
+  }
+}
+
+// settings menu
+void settingsScreen()
+{ 
+  //inputs reading
+  press();
+
+  int timeNow = millis();
+
+  lcd.setCursor(0,0);
+  lcd.print("<");
+  lcd.setCursor(15, 0);
+  lcd.print(">");
+
+  lcd.setCursor(2,0);
+  lcd.print("SETTING");
+  lcd.setCursor(0,1);
+  lcd.print("Info");
+
+  while(millis() < timeNow + DEFAULT_RESPONSE_TIME){
+
   }
 }
