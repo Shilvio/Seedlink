@@ -9,19 +9,42 @@ void renderMenu()
   switch (selectedMenu)
   {
     case 0:
+      maxSubmenu = 1;
+      minSubmenu = 0;
       defaultScreen();
+
       break;
     
     case 1:
+      maxSubmenu = 1;
+      minSubmenu = 0;
       mainMenu();
       break;
+    
+    case 2:
+
+      maxSubmenu = 1;
+      minSubmenu = 0;
+      if (selectedSubmenu == 0){
+        wateringScreen();
+      } 
+      else if (selectedSubmenu == 1){
+        settingsScreen();
+      }
+      break;
+
+    case 3:
+      break;
+      
   }
 }
 
 //main menu for selecting settings or irrigation
 void mainMenu () {
   
-   //inputs
+  
+
+  //inputs
   int button = press(); 
 
   if(button == 1){
@@ -44,10 +67,28 @@ void mainMenu () {
   lcd.setCursor(1,1);
   lcd.print("Settings");
 
+  //menu cursor
+  if (selector == 0){
+    selectedSubmenu = 0;
+    lcd.setCursor(0,1);
+    lcd.print(char(000));
+    lcd.setCursor(0,0);
+    lcd.print(">");
+    
+  }
+  if (selector == 1){
+    selectedSubmenu = 1;
+    lcd.setCursor(0,0);
+    lcd.print(char(000));
+    lcd.setCursor(0,1);
+    lcd.print(">");
+  }
+
   while(millis() < timeNow + DEFAULT_RESPONSE_TIME){
     
   }
 }
+
 //main menu using millis()
 void defaultScreen () {
 
@@ -59,12 +100,6 @@ void defaultScreen () {
 
   if(button == 1){
     selectedMenu ++;
-    lcd.clear();
-    return;
-  }
-  else if(button == 2)
-  {
-    selectedMenu --;
     lcd.clear();
     return;
   }
@@ -106,13 +141,28 @@ void defaultScreen () {
   while(millis() < timeNow + DEFAULT_RESPONSE_TIME){
   }
 }
+
 // watering menu
 void wateringScreen()
-{
-  //inputs reading
-  press();
-
+{ 
+  
   int timeNow = millis();
+
+  //inputs
+  int button = press(); 
+
+  if(button == 1){
+    Serial.println(true);
+  }
+  else if(button == 2)
+  {
+    selectedMenu --;
+    lcd.clear();
+    return;
+  }
+
+  lcd.setCursor (0,0);
+  lcd.print("settings");
 
   while(millis() < timeNow + DEFAULT_RESPONSE_TIME){
 
@@ -122,20 +172,24 @@ void wateringScreen()
 // settings menu
 void settingsScreen()
 { 
-  //inputs reading
-  press();
-
+  
   int timeNow = millis();
 
-  lcd.setCursor(0,0);
-  lcd.print("<");
-  lcd.setCursor(15, 0);
-  lcd.print(">");
+  //inputs
+  int button = press(); 
 
-  lcd.setCursor(2,0);
-  lcd.print("SETTING");
-  lcd.setCursor(0,1);
-  lcd.print("Info");
+  if(button == 1){
+    Serial.println(true);
+  }
+  else if(button == 2)
+  {
+    selectedMenu --;
+    lcd.clear();
+    return;
+  }
+
+  lcd.setCursor (0,0);
+  lcd.print("settings");
 
   while(millis() < timeNow + DEFAULT_RESPONSE_TIME){
 

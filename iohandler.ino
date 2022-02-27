@@ -3,7 +3,7 @@ int press(){
 
   unsigned long startTime;
   int8_t state = digitalRead(SW);
-  
+
   if(state != lastState){
 
     if(state == LOW) {
@@ -12,11 +12,11 @@ int press(){
     }
     //detects short press
     if( state == HIGH && millis() - lastButtonPress < LONG_PRESS ){
-      
+
       lastState = state;
       return 1;
     }
-    
+
   }
 
   //detects long press
@@ -39,10 +39,19 @@ void rotateEncoder()
 
   int dtValue = digitalRead(DT);
   if (dtValue == HIGH) {
-    Serial.println("Rotated clockwise ⏩");
+    Serial.println(maxSubmenu);
+    selector++;
+    if(selector > maxSubmenu){
+      selector = minSubmenu;
+    }
+
   }
   if (dtValue == LOW) {
-    Serial.println("Rotated counterclockwise ⏪");
+    selector--;
+    if (selector < minSubmenu){
+       selector = maxSubmenu;
+    }
+
   }
 
 }

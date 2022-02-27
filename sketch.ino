@@ -27,17 +27,27 @@ dht DHT;
 #define DEFAULT_RESPONSE_TIME 50
 #define LONG_PRESS 1000
 #define ZERO 0
-#define MAX_MENU 2
 
 //global variables
+
+//sensor variables
 int8_t lastState = HIGH;
 unsigned long timeNow = 0;
 char week[7][4] = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
+
+//input variables
 unsigned long lastButtonPress = 0;
 bool singlePress= false;
 bool encoderPos;
-int selectedMenu = 0;
 int lastCLK = digitalRead(CLK);
+
+//menu variables
+int selector = 0;
+int selectedMenu = 0;
+int selectedSubmenu = 0;
+int maxSubmenu = 0;
+int minSubmenu = 0;
+int maxMenu = 0;
 
 //imported from screens.ino
 void renderMenu();
@@ -76,6 +86,5 @@ void setup() {
 }
 
 void loop() {
-  Serial.print(selectedMenu);
   renderMenu();
 }
